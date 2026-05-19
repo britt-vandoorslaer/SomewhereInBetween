@@ -1,0 +1,452 @@
+/* ==================== HOME PAGINA ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.65;
+}
+
+/* FOTO CONTAINER */
+.photo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.main-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease-in-out;
+    filter: contrast(1.05);
+}
+
+/* LOGO OVERLAY */
+.logo-overlay {
+    position: fixed;
+    bottom: 6%;
+    left: 6%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.logo {
+    width: 520px;
+    max-width: 74vw;
+    height: auto;
+}
+
+.subtitle {
+    font-size: 1.22rem;
+    letter-spacing: 6px;
+    margin-top: 10px;
+    color: #ffffff;
+    opacity: 0.92;
+    display: flex;
+}
+
+/* FIXED TEKST - geen shadow */
+.fixed-text {
+    position: fixed;
+    bottom: 7.5%;
+    right: 6%;
+    max-width: 700px;
+    z-index: 20;
+    font-size: 1.07rem;
+    line-height: 1.72;
+    color: #ffffff;
+    display: flex;
+}
+
+/* SCROLL INHOUD - BELANGRIJK: verhoogd voor lage sensitivity */
+.scroll-content {
+    position: relative;
+    z-index: 5;
+    min-height: 1250vh;     /* Veel hoger zodat sensitivity 0.5 alle foto's bereikt */
+    padding-top: 108vh;
+}
+
+.scroll-spacer {
+    height: 80vh;
+}
+
+.hint {
+    text-align: center;
+    font-size: 1.32rem;
+    opacity: 0.68;
+    padding: 100px 0 160px;
+    letter-spacing: 1.2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+    .logo { width: 420px; }
+    
+    .fixed-text {
+        right: 5%;
+        left: 5%;
+        max-width: none;
+        bottom: 6%;
+        font-size: 1.02rem;
+    }
+    
+    .logo-overlay {
+        bottom: 17%;
+        left: 5%;
+    }
+    
+    .nav-container {
+        gap: 35px;
+    }
+}
+/* ==================== FOTOREEEKS PAGINA ==================== */
+
+.fotoreeks-page .navbar {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+
+
+/* ==================== GALLERY LAYOUT ==================== */
+
+.gallery-container {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 90px;        /* ruimte onder de navbar */
+    background: #000000;
+}
+
+.sidebar {
+    width: 200px;
+    padding: 70px 40px 40px;
+    background: #000000;
+    flex-shrink: 0;
+    border-right: 1px solid #000000;
+}
+
+.back-link, .menu-item, .contact-item {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 1.08rem;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s;
+}
+
+.back-link:hover, .menu-item:hover, .contact-item:hover {
+    color: #ffff99;
+}
+
+.footer-text {
+    margin-top: 380px;
+    font-size: 0.93rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+    gap: 14px;
+    padding: 40px 50px 80px;
+    background: #000000;
+}
+
+.gallery-item {
+    aspect-ratio: 16 / 10.6;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.09);
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.96);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 92%;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#lightbox-image {
+    max-height: 78vh;
+    max-width: 100%;
+    object-fit: contain;
+    transition: opacity 0.4s ease;   /* extra zekerheid */
+}
+
+.lightbox-caption {
+    margin-top: 20px;
+    max-width: 800px;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ddd;
+    padding: 0 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: -50px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 42px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+
+.prev-btn { left: -80px; }
+.next-btn { right: -80px; }
+
+.nav-btn:hover {
+    opacity: 1;
+    background: rgba(255,235,59,0.2);
+}
+
+/* ==================== NAVIGATIE - VOLLEDIGE BREEDTE ==================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 28px;
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1440px;
+    margin: 0;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    gap: 48px
+}
+
+.logo-nav {
+    display: right;
+}
+
+.nav-logo {
+    height: 52px;           /* Pas aan indien nodig */
+    width: auto;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+}
+
+.nav-links {
+    display: flex;
+    gap: 50px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.16rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #ffff99;
+    transform: translateY(-2px);
+}
+
+
+/* ==================== FOTOREEEKS SPECIFIEK (rest blijft hetzelfde) ==================== */
+
+.fotoreeks-page .navbar {
+    background: rgba(0, 0, 0, 0.96);
+}
+
+/* Zorg dat logo-nav niet te groot wordt op mobiel */
+@media (max-width: 860px) {
+    .nav-logo {
+        height: 48px;
+    }
+    
+    .nav-links {
+        gap: 30px;
+    }
+}
+/* Aanpassingen voor exacte match met screenshot */
+.gallery-container {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 95px;        /* ruimte onder navbar */
+    background: #000000;
+}
+
+.sidebar {
+    width: 260px;
+    padding: 80px 45px 40px;
+    background: #000000;
+    flex-shrink: 0;
+    border-right: 1px solid #000000;
+}
+
+.gallery-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);   /* exact 3 kolommen */
+    grid-template-rows: repeat(2, auto);     /* 2 rijen */
+    gap: 16px;
+    padding: 45px 55px 80px;
+    background: #000000;
+}
+
+.gallery-item {
+    aspect-ratio: 16 / 10.8;   /* past beter bij je foto's */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Active link in navbar (gele lijn) */
+.nav-link.active {
+    color: #ffff99;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 22px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #ffff99;
+}
+
+/* Kleinere aanpassingen voor betere match */
+.navbar {
+    padding: 26px 40px;
+}
+
+.nav-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    justify-content: space-between;   /* logo links, links rechts */
+}
+/* ==================== VERBETERDE LIGHTBOX PIJLEN ==================== */
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.nav-btn:hover {
+    background: rgba(227, 209, 122, 0.85);   /* jouw gele/gouden kleur */
+    color: black;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(227, 209, 122, 0.4);
+}
+
+.nav-btn span {
+    transition: transform 0.3s ease;
+}
+
+.nav-btn:hover span {
+    transform: scale(1.2);
+}
+
+/* Posities */
+.prev-btn {
+    left: -30px;
+}
+
+.next-btn {
+    right: -30px;
+}
+
+/* Extra polish: iets grotere klikgebied + betere zichtbaarheid */
+.nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Responsive: op kleine schermen kleiner maken */
+@media (max-width: 768px) {
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .prev-btn { left: -15px; }
+    .next-btn { right: -15px; }
+}
