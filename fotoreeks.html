@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotoreeks • Somewhere In Between</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="fotoreeks-page">
+
+    <!-- NAVIGATIE -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo links -->
+            <a href="index.html" class="logo-nav">
+                <img src="Logo.png" alt="Somewhere In Between" class="nav-logo">
+            </a>
+            
+            <!-- Navigatie rechts -->
+            <div class="nav-links">
+                <a href="fotoreeks.html" class="nav-link active">Fotoreeks</a>
+                <a href="context.html" class="nav-link">Context / Verdieping</a>
+                <a href="sponsors.html" class="nav-link">Sponsors</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="gallery-container">
+        
+        <!-- LINKER SIDEBAR -->
+        <div class="sidebar">
+            <div class="menu">
+                <a href="#" class="menu-item">→ About me</a>
+                <a href="portfolio.html" class="menu-item">→ Portfolio</a>
+            </div>
+            
+            <div class="contact">
+                <a href="#" class="contact-item">↓ E-mail</a>
+                <a href="#" class="contact-item">↓ Instagram</a>
+            </div>
+            
+            <div class="footer-text">
+                VIEW/FINDER #01
+            </div>
+        </div>
+
+        <!-- FOTO GRID - 2 rijen × 3 kolommen -->
+        <div class="gallery-grid">
+            <div class="gallery-item" data-index="0">
+                <img src="Foto 2.png" alt="Fotoreeks 2">
+            </div>
+            <div class="gallery-item" data-index="1">
+                <img src="Foto 1.png" alt="Fotoreeks 1">
+            </div>
+            <div class="gallery-item" data-index="2">
+                <img src="Foto 6.png" alt="Fotoreeks 6">
+            </div>
+            <div class="gallery-item" data-index="3">
+                <img src="Foto 4.png" alt="Fotoreeks 4">
+            </div>
+            <div class="gallery-item" data-index="4">
+                <img src="Foto 3.png" alt="Fotoreeks 3">
+            </div>
+            <div class="gallery-item" data-index="5">
+                <img src="Foto 5.png" alt="Fotoreeks 5">
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox structuur (moet in je <body> staan) -->
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <button id="close-btn" class="close-btn">&times;</button>
+        
+        <img id="lightbox-image" src="" alt="">
+        
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+        
+        <!-- Optionele navigatiepijlen -->
+        <button id="prev-btn" class="nav-btn prev-btn" aria-label="Vorige foto">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+</button>
+
+<button id="next-btn" class="nav-btn next-btn" aria-label="Volgende foto">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</button>
+    </div>
+</div>
+
+<script src="fotoreeks.js"></script>
+
+</body>
+</html>
